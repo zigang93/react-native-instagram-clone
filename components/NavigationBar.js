@@ -1,15 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'; 
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 
-const NavigationBar = ({ title, leftText, onPressLeftText }) => {(
-  <View style={styles.container}>
-      <TouchableOpacity style={styles.leftText} onPress={onPressLeftText}>
-        <Text>{leftText}</Text>
-      </TouchableOpacity>
-      <Text style={styles.title}>{title}</Text>
-  </View>
-)};
+const NavigationBar = ({ title, leftText, onPressLeftText }) => {
+  return (
+    <View style={styles.container}>
+        <TouchableOpacity style={styles.leftText} onPress={onPressLeftText}>
+          <Text>{leftText}</Text>
+        </TouchableOpacity>
+        <Text style={styles.title}>{title}</Text>
+    </View>
+  )
+};
 
 NavigationBar.propTypes = {
   title: PropTypes.string,
