@@ -3,6 +3,7 @@ import { Modal, Platform, StyleSheet, View } from 'react-native';
 
 import { Constants } from 'expo';
 import Feed from './screens/Feed';
+import Comments from './screens/Comments';
 export default class App extends React.Component {
 
   state = { 
@@ -26,9 +27,27 @@ export default class App extends React.Component {
   };
 
   render() {
+    const { commentsForItem, showModal, selectedItemId } = this.state;
+
     return (
       <View style={styles.container}>
-        <Feed style={styles.feed} />
+        <Feed
+          style={styles.feed} 
+          commentsForItem={commentsForItem} 
+          onPressComments={this.openCommentScreen}
+        /> 
+        <Modal
+          visible={showModal} 
+          animationType="slide" 
+          onRequestClose={this.closeCommentScreen}
+        > 
+          <Comments
+            style={styles.container} 
+            comments={commentsForItem[selectedItemId] || []} 
+            onClose={this.closeCommentScreen}
+            // ...
+          /> 
+        </Modal>
       </View>
     );
   }
