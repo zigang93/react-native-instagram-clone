@@ -1,9 +1,30 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { Constants } from 'expo';
 import Feed from './screens/Feed';
 export default class App extends React.Component {
+
+  state = { 
+    commentsForItem: {}, 
+    showModal: false, 
+    selectedItemId: null,
+  };
+
+  openCommentScreen = id => { 
+    this.setState({
+      showModal: true,
+      selectedItemId: id,
+    });
+  };
+
+  closeCommentScreen = () => { 
+    this.setState({
+      showModal: false,
+      selectedItemId: null, 
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>

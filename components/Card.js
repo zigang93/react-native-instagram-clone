@@ -11,7 +11,7 @@ class Card extends Component {
     image: Image.propTypes.source.isRequired,
     linkText: PropTypes.string,
     onPressLinkText: PropTypes.func,
-  }
+  };
 
   static defaultProps = { 
     linkText: '', 
